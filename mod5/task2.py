@@ -12,7 +12,7 @@ class Queue:
     def is_empty(self):
         return self.start is None
 
-    def pop(self, value):
+    def push(self, value):
         new_node = Node(value)
         if self.end is None:
             self.start = self.end = new_node
@@ -21,7 +21,7 @@ class Queue:
         self.end.prev = new_node
         self.end = new_node
 
-    def push(self):
+    def pop(self):
         if self.is_empty():
             return None
         value = self.start.data
@@ -41,14 +41,14 @@ class Queue:
 
 
 queue = Queue()
-queue.pop(4)
-queue.pop(5)
-queue.pop(7)
-queue.pop(8)
+queue.push(4)
+queue.push(5)
+queue.push(7)
+queue.push(8)
 
 queue.print()
 
-dequeued = queue.push()
+dequeued = queue.pop()
 print("Dequeued element:", dequeued)
 
 queue.print()
