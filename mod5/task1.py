@@ -1,6 +1,6 @@
 class Node:
-    def __init__(self, value):
-        self.value = value
+    def __init__(self, data):
+        self.data = data
         self.next = None
 
 class Stack:
@@ -10,27 +10,22 @@ class Stack:
     def is_empty(self):
         return self.top is None
 
-    def push(self, value):
-        new_node = Node(value)
-        new_node.next = self.top
-        self.top = new_node
-
     def pop(self):
         if self.is_empty():
             return None
-        value = self.top.value
+        value = self.top.data
         self.top = self.top.next
         return value
 
-    def peek(self):
-        if self.is_empty():
-            return None
-        return self.top.value
+    def push(self, val):
+        new_node = Node(val)
+        new_node.next = self.top
+        self.top = new_node
 
-    def display(self):
+    def print(self):
         current = self.top
         while current:
-            print(current.value, end=" ")
+            print(current.data, end=" ")
             current = current.next
         print("None")
 
@@ -40,11 +35,9 @@ stack.push(4)
 stack.push(5)
 stack.push(6)
 
-stack.display()
-
-print("Top element:", stack.peek())
+stack.print()
 
 popped = stack.pop()
 print("Popped element:", popped)
 
-stack.display()
+stack.print()
