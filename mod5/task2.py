@@ -1,54 +1,54 @@
 class Node:
-    def __init__(self, value):
-        self.value = value
+    def __init__(self, data):
+        self.data = data
         self.next = None
         self.prev = None
 
 class Queue:
     def __init__(self):
-        self.front = None
-        self.rear = None
+        self.start = None
+        self.end = None
 
     def is_empty(self):
-        return self.front is None
+        return self.start is None
 
-    def enqueue(self, value):
+    def pop(self, value):
         new_node = Node(value)
-        if self.rear is None:
-            self.front = self.rear = new_node
+        if self.end is None:
+            self.start = self.end = new_node
             return
-        new_node.next = self.rear
-        self.rear.prev = new_node
-        self.rear = new_node
+        new_node.next = self.end
+        self.end.prev = new_node
+        self.end = new_node
 
-    def dequeue(self):
+    def push(self):
         if self.is_empty():
             return None
-        value = self.front.value
-        self.front = self.front.prev
-        if self.front is None:
-            self.rear = None
+        value = self.start.data
+        self.start = self.start.prev
+        if self.start is None:
+            self.end = None
         else:
-            self.front.next = None
+            self.start.next = None
         return value
 
-    def display(self):
-        current = self.rear
+    def print(self):
+        current = self.end
         while current:
-            print(current.value, end=" -> ")
+            print(current.data, end=" -> ")
             current = current.next
         print("None")
 
 
 queue = Queue()
-queue.enqueue(4)
-queue.enqueue(5)
-queue.enqueue(7)
-queue.enqueue(8)
+queue.pop(4)
+queue.pop(5)
+queue.pop(7)
+queue.pop(8)
 
-queue.display()
+queue.print()
 
-dequeued = queue.dequeue()
+dequeued = queue.push()
 print("Dequeued element:", dequeued)
 
-queue.display()
+queue.print()
