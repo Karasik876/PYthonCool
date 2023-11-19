@@ -61,7 +61,7 @@ class Transport:
             raise ValueError('В номере не должно быть лишних символов, допустимы только буквы и цифры')
 
     def __str__(self):
-        return f"Транспорт: {self._brand} {self._year}, Номер: {self._number}"
+        return f"Транспорт: {self._brand} {self._year}, Номер: {self._number}, Текущая скорость: {self._speed}, Координаты: {self._coordinates}"
 
     def isInArea(self, pos_x, pos_y, length, width) -> bool:
         # Получаем координаты транспорта
